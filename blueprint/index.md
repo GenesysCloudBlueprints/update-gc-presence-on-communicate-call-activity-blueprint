@@ -160,29 +160,45 @@ First, import these workflows to your Genesys Cloud organization.
 
    ![Import your workflow file](images/SelectWorkflow1ImportFile.png "Import your workflow file")
 
-6. Review your workflow. Copy the workflow ID from the URL and save it. You will need it to create the event orchestration trigger. After you have reviewed your workflow, click **Save** and then click **Publish**.
+6. Modify the presence definition id. Click the **Call Data Action** box.  In the **PRESENCE_DEFINITION_ID** box, paste the id of the desired Genesys Cloud presence value you'd like this workflow to set users to.
 
-   ![Save your workflow](images/ImportedWorkflow1.png "Save your workflow")
+   ![Modify presence value](images/ModifyThePresenceDefinitionId1.png "Modify the presence definition id")
 
-7. Download the **Set GC User to Available_v1-0.i3WorkFlow** file from the [update-gc-presence-on-communicate-call-activity-blueprint](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository.  
+   :::primary
+   **Note:** You can use the **GET /api/v2/presencedefinitions** GC Public API endpoint to find all your presence definition ids.  A link to the Genesys Cloud API explorer is in the Additional Resources section at the bottom of this blueprint.
+   :::
 
-8. In Genesys Cloud, navigate to **Admin** > **Architect** > **Flows:Workflow** and click **Add**.
+7. Review your workflow. Copy the workflow ID from the URL and save it. You will need it to create the event orchestration trigger. After you have reviewed your workflow, click **Save** and then click **Publish**.
+
+  ![Save your workflow](images/ImportedWorkflow1.png "Save your workflow")
+
+8. Download the **Set GC User to Available_v1-0.i3WorkFlow** file from the [update-gc-presence-on-communicate-call-activity-blueprint](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository.  
+
+9. In Genesys Cloud, navigate to **Admin** > **Architect** > **Flows:Workflow** and click **Add**.
 
   ![Import the script](images/AddWorkflow1.png "Import the script")
 
-9. Name your workflow and click **Create**.
+10. Name your workflow and click **Create**.
 
  ![Name your workflow](images/NameWorkflow2.png "Name your workflow")
 
-10. From the **Save** menu, click **Import**.
+11. From the **Save** menu, click **Import**.
 
   ![Import your workflow](images/ImportWorkflow2.png "Import your workflow")
 
-11. Select the downloaded **Set GC User to Available_v1-0.i3WorkFlow** file. Click **Import**.
+12. Select the downloaded **Set GC User to Available_v1-0.i3WorkFlow** file. Click **Import**.
 
   ![Import your workflow file](images/SelectWorkflow2ImportFile.png "Import your workflow file")
 
-12. Review your workflow. Copy the workflow ID from the URL and save it. You will need it to create the event orchestration trigger. After you have reviewed your workflow, click **Save** and then click **Publish**.
+13. Modify the presence definition id. Click the **Call Data Action** box.  In the **PRESENCE_DEFINITION_ID** box, paste the id of the desired Genesys Cloud presence value you'd like this workflow to set users to.
+
+  ![Save your workflow](images/ImportedWorkflow2.png "Save your workflow")
+
+  :::primary
+  **Note:** You can use the **GET /api/v2/presencedefinitions** GC Public API endpoint to find all your presence definition ids.  A link to the Genesys Cloud API explorer is in the Additional Resources section at the bottom of this blueprint.
+  :::
+
+14. Review your workflow. Copy the workflow ID from the URL and save it. You will need it to create the event orchestration trigger. After you have reviewed your workflow, click **Save** and then click **Publish**.
 
   ![Save your workflow](images/ImportedWorkflow2.png "Save your workflow")
 
@@ -279,6 +295,7 @@ After you have created the workflows, create the triggers that call them. You ne
 
 ## Additional resources
 
+* [Genesys Cloud API Explorer](https://developer.genesys.cloud/devapps/api-explorer "Opens the GC API Explorer")
 * [Genesys Cloud notification triggers ("Available topics")](https://developer.genesys.cloud/notificationsalerts/notifications/available-topics "Opens the Available topics page")
 * [Prefixes for AWS regions](https://developer.genesys.cloud/platform/api/ "Open the Overview page in the API section of the Genesys Cloud Developer Center")
 * [Postman API Platform](https://www.postman.com/ "Goes to the Postman API Platform page") in the Postman documentation
