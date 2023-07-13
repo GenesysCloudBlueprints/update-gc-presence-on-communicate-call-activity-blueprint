@@ -120,7 +120,7 @@ To enable a Genesys Cloud data action to make public API requests on behalf of y
 
   ![Copy the client ID and client secret values](images/2COAuthClientCredentials3.png "Copy the client ID and client secret values")
 
-### Add four Genesys Cloud data action integrations
+### Add two Genesys Cloud data action integrations
 
 To update a user's presence in Genesys Cloud, you call a Genesys Cloud public API. To enable this public API call, add a Genesys Cloud data actions integration.
 
@@ -144,9 +144,31 @@ To update a user's presence in Genesys Cloud, you call a Genesys Cloud public AP
 
    ![Set the presence data integration to active](images/3ESetToActive.png "Set the presence data action integration to active")
 
-### Import the Update Genesys Cloud User Presence data action
+ To get the details of a conversation in Genesys Cloud, you call a Genesys Cloud public API. To enable this public API call, add a Genesys Cloud data actions integration.
 
-The GC User Presence data action uses the authenticated token that is supplied by presence GC OAuth Client created in the previous step.
+6. Navigate to **Admin** > **Integrations** > **Integrations** and install the **Genesys Cloud Data Actions** integration. For more information, see [About the data actions integrations](https://help.mypurecloud.com/?p=209478 "Opens the About the data actions integrations article") in the Genesys Cloud Resource Center.
+
+  ![Genesys Cloud Data Actions integration](images/3AGenesysCloudDataActionInstall.png "Genesys Cloud Data Actions integration")
+
+7. Enter a name for the Genesys Cloud data action.
+
+  ![Rename the data action](images/3BRenameDataAction2.png "Rename the data action")
+
+8. On the **Configuration** tab, click **Credentials** and then click **Configure**.
+
+  ![Navigate to the OAuth credentials](images/3DOAuthClientIDandSecret2.png "Navigate to the OAuth credentials")
+
+9. Enter the client ID and client secret of the presence OAuth client that you in the previous step (#create-an-oauth-client-for-use-with-the-genesys-cloud-data-action-integration "Goes to the create an OAuth Client section"). Click **OK** and save the data action.
+
+  ![Add OAuth client credentials](images/3CAddOAuthCredentials2.png "Add OAuth client credentials")
+
+10. Navigate to the main Integrations page and set the presence data action integration to **Active**.
+
+  ![Set the presence data integration to active](images/3ESetToActive2.png "Set the presence data action integration to active")
+
+### Import four Genesys Cloud data actions
+
+The GC User Presence data actions use the authenticated token that is supplied by the presence GC OAuth Client created in the previous step.
 
 1. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the GC-User-Presence-Update.custom.json file.
 
@@ -154,9 +176,41 @@ The GC User Presence data action uses the authenticated token that is supplied b
 
    ![Import the data action](images/4AImportDataActions.png "Import the data action")
 
-3. Select the GC-User-Presence-Update.custom.json file and associate it with the web services data action that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+3. Select the GC-User-Presence-Update.custom.json file and associate it with the **Update Genesys Cloud User Presence** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
 
    ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction.png "Import the Update Genesys Cloud User Presence data action")
+
+4. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the Get-Genesys-Cloud-User-Presence.custom.json file.
+
+5. In Genesys Cloud, navigate to **Integrations** > **Actions** and click **Import**.
+
+  ![Import the data action](images/4AImportDataActions.png "Import the data action")
+
+6. Select the GC-User-Presence-Update.custom.json file and associate it with the **Update Genesys Cloud User Presence** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+
+  ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction2.png "Import the Get Genesys Cloud User Presence data action")
+
+The GC conversation detail data actions use the authenticated token that is supplied by the conversation GC OAuth Client created in the previous step.
+
+7. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the GetInboundConversationDetailsForPickUp.custom.json file.
+
+8. In Genesys Cloud, navigate to **Integrations** > **Actions** and click **Import**.
+
+   ![Import the data action](images/4AImportDataActions.png "Import the data action")
+
+9. Select the GetInboundConversationDetailsForPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+
+   ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction3.png "Import the Inbound Conversation Details data action")
+
+10. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the GetOutboundConversationDetailsForPickUp.custom.json file.
+
+11. In Genesys Cloud, navigate to **Integrations** > **Actions** and click **Import**.
+
+  ![Import the data action](images/4AImportDataActions.png "Import the data action")
+
+12. Select the GetOutboundConversationDetailsForPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+
+  ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction4.png "Import the nbound Conversation Details data action")
 
 ### Import the Architect workflows
 
