@@ -1,0 +1,49 @@
+{
+  "name": "GetOutboundConversationDetailsForPickUp",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/analytics/conversations/${input.CONVERSATION_ID}/details",
+      "requestType": "GET",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "segmentType": "['participants'][?(@.purpose=='user')]['sessions'][?(@.direction=='outbound')]['segments'][?(@.segmentType=='interact')].segmentType"
+      },
+      "translationMapDefaults": {},
+      "successTemplate": "{\"segmentType\": ${segmentType}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "CONVERSATION_ID": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {
+          "segmentType": {
+            "type": "array",
+            "items": {
+              "title": "segmentType",
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}
