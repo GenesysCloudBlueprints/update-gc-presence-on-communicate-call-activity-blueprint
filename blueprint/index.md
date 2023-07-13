@@ -1,17 +1,17 @@
 ---
-title: "Update the presence of a Genesys Cloud user based upon an incoming Communicate call"
+title: "Update the presence of a Genesys Cloud user based upon the answer of a Communicate call"
 author: yuri.yeti
 indextype: blueprint
 icon: blueprint
 image: images/OpenScriptDropdown.png
 category: 6
 summary: |
-  This Genesys Cloud Developer Blueprint explains how to set up Genesys Cloud to update a Genesys Cloud user's presence the user receives an inbound GC Communicate (non-ACD or PBX) call.
+  This Genesys Cloud Developer Blueprint explains how to set up Genesys Cloud to update a Genesys Cloud user's presence upon the answer of a Communicate (non-ACD or PBX) call.
 ---
 
-This Genesys Cloud Developer Blueprint explains how to set up Genesys Cloud to update a Genesys Cloud user's presence the user receives an inbound GC Communicate (non-ACD or PBX) call.
+This Genesys Cloud Developer Blueprint explains how to set up Genesys Cloud to update a Genesys Cloud user's presence when the user answers an inbound GC Communicate (non-ACD or PBX) call.
 
-When an Architect workflow receives a communicate call trigger, a Genesys Cloud Public API call is made to update the presence of the Genesys Cloud user receiving the Communicate call.
+When an Architect workflow receives a communicate call trigger, a Genesys Cloud Public API call is made to update the presence of the Genesys Cloud users on the Communicate call when someone answers the Communicate Call.
 
 ![Inbound Communicate Call Genesys Cloud user presence flow](images/inbound-communicate-call-gc-presence-workflow.png "Genesys Cloud presence update from an inbound Communicate call")
 
