@@ -42,7 +42,7 @@ The following shows the end-to-end user experience that this solution enables.
 
 ## Configure Genesys Cloud
 
-### Create two custom roles for use with Genesys Cloud OAuth clients
+### Create three custom roles for use with Genesys Cloud OAuth clients
 
 1. Navigate to **Admin** > **Roles/Permissions** and click **Add Role**.
 
@@ -76,7 +76,23 @@ The following shows the end-to-end user experience that this solution enables.
 
 ![Add permissions to the custom role](images/assignPermissionToCustomRole2.png "Add permissions to the custom role")
 
-### Create an OAuth client for use with the Genesys Cloud data action integration
+7. Navigate to **Admin** > **Roles/Permissions** and click **Add Role**.
+
+   ![Add a custom role](images/createRole.png "Add a custom role")
+
+8. Type a **Name** for your custom role.
+
+  ![Name the custom role](images/nameCustomRole3.png "Name the custom role")
+
+9. Search and select the **Analytics**>**Conversation Detail**>**View** permission and click **Save** to assign the appropriate permissions to your custom role.
+
+:::primary
+**Note:** Assign this role to your user record before creating the Genesys Cloud OAuth client, as described in the next section.
+:::
+
+![Add permissions to the custom role](images/assignPermissionToCustomRole3.png "Add permissions to the custom role")
+
+### Create two OAuth clients for use with Genesys Cloud data action integrations
 
 To enable a Genesys Cloud data action to make public API requests on behalf of your Genesys Cloud organization, use an OAuth client to configure authentication with Genesys Cloud.
 
@@ -92,7 +108,19 @@ To enable a Genesys Cloud data action to make public API requests on behalf of y
 
    ![Copy the client ID and client secret values](images/2COAuthClientCredentials2.png "Copy the client ID and client secret values")
 
-### Add a Genesys Cloud data actions integration
+4. Navigate to **Admin** > **Integrations** > **OAuth** and click **Add Client**.
+
+  ![Add an OAuth client](images/2AAddOAuthClient.png "Add an OAuth client")
+
+5. Enter a name for the OAuth client and select **Client Credentials** as the grant type. Click the **Roles** tab and assign the ConversationReadPublicAPI role for the OAuth client.
+
+    ![Select the custom role and the grant type](images/2BOAuthClientSetup3.png "Select the custom role and the grant type")
+
+6. Click **Save**. Copy the client ID and the client secret values for later use.
+
+  ![Copy the client ID and client secret values](images/2COAuthClientCredentials3.png "Copy the client ID and client secret values")
+
+### Add four Genesys Cloud data action integrations
 
 To update a user's presence in Genesys Cloud, you call a Genesys Cloud public API. To enable this public API call, add a Genesys Cloud data actions integration.
 
@@ -156,11 +184,11 @@ First, import these workflows to your Genesys Cloud organization.
 
    ![Import the workflow](images/ImportWorkflow1.png "Import the workflow")
 
-5. Select the downloaded **Set GC User to Busy_v2-0.i3WorkFlow** file. Click **Import**.
+5. Select the downloaded **Set GC User to Busy.i3WorkFlow** file. Click **Import**.
 
    ![Import your workflow file](images/SelectWorkflow1ImportFile.png "Import your workflow file")
 
-6. Modify the presence definition id. Click the **Call Data Action** box.  In the **PRESENCE_DEFINITION_ID** box, paste the id of the desired Genesys Cloud presence value you'd like this workflow to set users to.
+6. Modify the presence definition id. Click the **Call Data Action** boxes that use the **GC User Presence Update** data action.  In the **PRESENCE_DEFINITION_ID** box, paste the id of the desired Genesys Cloud presence value you'd like this workflow to set users to.
 
    ![Modify presence value](images/ModifyThePresenceDefinitionId1.png "Modify the presence definition id")
 
@@ -172,7 +200,7 @@ First, import these workflows to your Genesys Cloud organization.
 
   ![Save your workflow](images/ImportedWorkflow1.png "Save your workflow")
 
-8. Download the **Set GC User to Available_v1-0.i3WorkFlow** file from the [update-gc-presence-on-communicate-call-activity-blueprint](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository.  
+8. Download the **Set GC User to Available.i3WorkFlow** file from the [update-gc-presence-on-communicate-call-activity-blueprint](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository.  
 
 9. In Genesys Cloud, navigate to **Admin** > **Architect** > **Flows:Workflow** and click **Add**.
 
@@ -190,9 +218,9 @@ First, import these workflows to your Genesys Cloud organization.
 
   ![Import your workflow file](images/SelectWorkflow2ImportFile.png "Import your workflow file")
 
-13. Modify the presence definition id. Click the **Call Data Action** box.  In the **PRESENCE_DEFINITION_ID** box, paste the id of the desired Genesys Cloud presence value you'd like this workflow to set users to.
+13. Modify the presence definition id. Click the **Call Data Action** box that uses the **GC User Presence Update** data action.  In the **PRESENCE_DEFINITION_ID** box, paste the id of the desired Genesys Cloud presence value you'd like this workflow to set users to.
 
-  ![Save your workflow](images/ImportedWorkflow2.png "Save your workflow")
+  ![Save your workflow](images/ModifyThePresenceDefinitionId2.png "Save your workflow")
 
   :::primary
   **Note:** You can use the **GET /api/v2/presencedefinitions** GC Public API endpoint to find all your presence definition ids.  A link to the Genesys Cloud API explorer is in the Additional Resources section at the bottom of this blueprint.
