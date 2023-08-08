@@ -1,4 +1,4 @@
-# [DRAFT]Update the presence of a Genesys Cloud user based upon the answer of a Communicate call
+# Update the presence of a Genesys Cloud user based upon the answer of a Communicate call
 
 This Genesys Cloud Developer Blueprint explains how to set up Genesys Cloud to update a Genesys Cloud user's presence when the user answers an inbound GC Communicate (non-ACD or PBX) call.
 
