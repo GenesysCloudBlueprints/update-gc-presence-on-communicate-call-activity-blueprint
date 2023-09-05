@@ -228,30 +228,29 @@ You must first import these workflows to your Genesys Cloud organization:
    :::
 
 7. Review your workflow. Extract the workflow ID from the URL and save it. The URL is necessary to create the Event Orchestration trigger. Click **Save** and then click **Publish**.
-
-  ![Save your workflow](images/ImportedWorkflow1.png "Save your workflow")
+![Save your workflow](images/ImportedWorkflow1.png "Save your workflow")
 
 8. Download the **Set GC User to Available.i3WorkFlow** file from the [update-gc-presence-on-communicate-call-activity-blueprint](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository.  
 
 9. In Genesys Cloud, navigate to **Admin** > **Architect** > **Flows:Workflow** and click **Add**.
 
-  ![Import the script](images/AddWorkflow1.png "Import the script")
+   ![Import the script](images/AddWorkflow1.png "Import the script")
 
 10. Enter a name for the workflow and click **Create Flow**.
 
- ![Name your workflow](images/NameWorkflow2.png "Name your workflow")
+    ![Name your workflow](images/NameWorkflow2.png "Name your workflow")
 
 11. From the **Save** menu, click **Import**.
 
-  ![Import your workflow](images/ImportWorkflow2.png "Import your workflow")
+      ![Import your workflow](images/ImportWorkflow2.png "Import your workflow")
 
 12. Select the downloaded **Set GC User to Available_v1-0.i3WorkFlow** file and click **Import**.
 
-  ![Import your workflow file](images/SelectWorkflow2ImportFile.png "Import your workflow file")
+      ![Import your workflow file](images/SelectWorkflow2ImportFile.png "Import your workflow file")
 
 13. Modify the presence definition ID. Select the **Call Data Action** box that uses the **GC User Presence Update** data action.  In the **PRESENCE_DEFINITION_ID** field, paste the ID of the desired Genesys Cloud presence value that you want this workflow to set for the users.
 
-  ![Save your workflow](images/ModifyThePresenceDefinitionId2.png "Save your workflow")
+      ![Save your workflow](images/ModifyThePresenceDefinitionId2.png "Save your workflow")
 
   :::primary
   **Note:** You can use the `GET /api/v2/presencedefinitions` Genesys Cloud Public API endpoint to get all your presence definition IDs.
@@ -259,7 +258,7 @@ You must first import these workflows to your Genesys Cloud organization:
 
 14. Review your workflow. Extract the workflow ID from the URL and save it. The URL is necessary to create the Event Orchestration trigger. Click **Save** and then click **Publish**.
 
-  ![Save your workflow](images/ImportedWorkflow2.png "Save your workflow")
+      ![Save your workflow](images/ImportedWorkflow2.png "Save your workflow")
 
 ## Create the event orchestration triggers
 
@@ -296,7 +295,7 @@ Create the triggers that invokes the created Architect workflows. You must activ
    :::primary
      **Note:** You can use the following JSON string to match the blueprint solution.
    :::
-   
+
    ```json
 
      {
