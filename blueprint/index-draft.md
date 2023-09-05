@@ -74,7 +74,7 @@ To create a custom role in Genesys Cloud:
 
 To enable a Genesys Cloud data action to make public API requests on behalf of your Genesys Cloud organization, use an OAuth client to configure authentication with Genesys Cloud.
 
-Create two OAuth clients for use with the data action integration with the following custom role:
+Create three OAuth clients for use with the data action integration with the following custom roles:
 
 | OAuth Client   | Custom role | OAuth Client Name |
 |----------------|-------------------------------|-------|
@@ -292,9 +292,10 @@ Create the triggers that invokes the created Architect workflows. You must activ
 8. Click the **Body** tab. Ensure that you change your API domain to match the AWS region of your hosted Genesys Cloud organization. Replace **my-workflow-id** with the ID of the **Set GC User to Busy** Architect workflow that you created previously. Click **Send**.
 
      ![Create the Conversation Start trigger](images/CreateTrigger1.png "Create the Conversation Start trigger")
-
+   :::primary
      **Note:** You can use the following JSON string to match the blueprint solution.
-     :::
+   :::
+   ```json
 
      {
        "topicName":"v2.detail.events.conversation.{id}.user.start",
@@ -311,14 +312,17 @@ Create the triggers that invokes the created Architect workflows. You must activ
              ],
          "enabled": true
      }
+     ```
 
 9. To create the second trigger, replace **my-workflow-id** with the ID of the **Set GC User to Available** Architect workflow that you created previously. Repeat the actions defined in step 8 and use the JSON body sample below to match the blueprint solution. Click **Send**.
 
     ![Create the Conversation Start trigger](images/CreateTrigger2.png "Create the Conversation Start trigger")
 
+   :::primary
     **Note:** If you want your JSON body to match the screenshot, copy and paste the following JSON string. Modify the IN operator values to match your business requirements.
     :::
-
+    
+   ```json
     {
       "topicName":"v2.detail.events.conversation.{id}.user.end",
       "name": "GC Communicate Call User End",
@@ -334,7 +338,7 @@ Create the triggers that invokes the created Architect workflows. You must activ
             ],
         "enabled": true
     }
-
+   ```
 ## Additional resources
 
 * [Genesys Cloud API Explorer](https://developer.genesys.cloud/devapps/api-explorer "Opens the GC API Explorer")
