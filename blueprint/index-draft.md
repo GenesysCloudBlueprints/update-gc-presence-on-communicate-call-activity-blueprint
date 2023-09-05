@@ -292,9 +292,11 @@ Create the triggers that invokes the created Architect workflows. You must activ
 8. Click the **Body** tab. Ensure that you change your API domain to match the AWS region of your hosted Genesys Cloud organization. Replace **my-workflow-id** with the ID of the **Set GC User to Busy** Architect workflow that you created previously. Click **Send**.
 
      ![Create the Conversation Start trigger](images/CreateTrigger1.png "Create the Conversation Start trigger")
+   
    :::primary
      **Note:** You can use the following JSON string to match the blueprint solution.
    :::
+   
    ```json
 
      {
