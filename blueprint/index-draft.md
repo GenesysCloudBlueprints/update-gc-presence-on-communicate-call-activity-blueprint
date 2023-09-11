@@ -1,5 +1,5 @@
 ---
-title: "Update the presence of a Genesys Cloud user based upon the answer of a Communicate call"
+title: "Update the presence of a Genesys Cloud user based on the answer of a Communicate call"
 author: yuri.yeti
 indextype: blueprint
 icon: blueprint
@@ -13,9 +13,9 @@ This Genesys Cloud Developer Blueprint explains how to set up Genesys Cloud to u
 
 When an Architect workflow receives a Communicate call trigger, a Genesys Cloud Public API call is made to update the presence of the Genesys Cloud user on the Communicate call when your customer answers the Communicate Call.
 
-![Inbound Communicate Call Genesys Cloud user presence flow](images/inbound-communicate-call-gc-presence-workflow.png "Genesys Cloud presence update from an inbound Communicate call")
+![Inbound Communicate call Genesys Cloud user presence flow](images/inbound-communicate-call-gc-presence-workflow.png "Genesys Cloud presence update from an inbound Communicate call")
 
-![Outbound Communicate Call Genesys Cloud user presence flow](images/outbound-communicate-call-gc-presence-workflow.png "Genesys Cloud presence update from an outbound Communicate call")
+![Outbound Communicate call Genesys Cloud user presence flow](images/outbound-communicate-call-gc-presence-workflow.png "Genesys Cloud presence update from an outbound Communicate call")
 
 The following illustration shows the end-to-end user experience that this solution enables.
 
@@ -67,7 +67,7 @@ To create a custom role in Genesys Cloud:
 4. Click **Save** to assign the appropirate permission to your custom role.
    
 :::primary
-  **Note:** Assign these three custom roles to your user before creating the Genesys Cloud OAuth client. You must activate the Event Orchestration in your Genesys Cloud organization for the **Process Automation** > **Trigger** > **All Permissions** permission to be available.
+  **Note:** Assign these three custom roles to your user before creating the Genesys Cloud OAuth client. Activate the Event Orchestration in your Genesys Cloud organization for the **Process Automation** > **Trigger** > **All Permissions** permission to be available.
   :::
 
 ### Create OAuth clients for use with Genesys Cloud data action integrations
@@ -102,7 +102,7 @@ To create an OAuth Client in Genesys Cloud:
 
 ### Add Genesys Cloud data action integrations
 
-You need to add two Genesys cloud data action integrations to call the Genesys Cloud public API for:
+Add two Genesys cloud data action integrations to call the Genesys Cloud public API for:
 * Updating the user's presence in Genesys Cloud.
 * Getting the details of the conversation in Genesys Cloud.
 
@@ -110,9 +110,9 @@ To create a data action integration for updating user's presence in Genesys Clou
 
 1. Navigate to **Admin** > **Integrations** > **Integrations** and install the **Genesys Cloud Data Actions** integration. For more information, see [About the data actions integrations](https://help.mypurecloud.com/?p=209478 "Opens the About the data actions integrations article") in the Genesys Cloud Resource Center.
 
-   ![Genesys Cloud Data Actions integration](images/3AGenesysCloudDataActionInstall.png "Genesys Cloud Data Actions integration")
+   ![Genesys Cloud data actions integration](images/3AGenesysCloudDataActionInstall.png "Genesys Cloud data actions integration")
 
-2. Enter a name for the Genesys Cloud data action, such as Update Genesys Cloud User Presence in this blueprint.
+2. Enter a name for the Genesys Cloud data action, such as Update Genesys Cloud User Presence in this blueprint solution.
 
    ![Rename the data action](images/3BRenameDataAction.png "Rename the data action")
 
@@ -134,7 +134,7 @@ To create a data action integration for getting the details of a conversation in
 
     ![Genesys Cloud Data Actions integration](images/3AGenesysCloudDataActionInstall.png "Genesys Cloud Data Actions integration")
 
-2. Enter a name for the Genesys Cloud data action, such as GetConversationDetailsPublicAPI in this blueprint.
+2. Enter a name for the Genesys Cloud data action, such as GetConversationDetailsPublicAPI in this blueprint solution.
 
     ![Rename the data action](images/3BRenameDataAction2.png "Rename the data action")
 
@@ -152,12 +152,12 @@ To create a data action integration for getting the details of a conversation in
 
 ### Import the Genesys Cloud data actions
 
-You need to import the following JSON files from the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository:
+Import the following JSON files from the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository:
 * `Get-User-Presence-Update.custom.json`
 * `GetInboundConversationDetailsForPickUp.custom.json`
 * `GetOutboundConversationDetailsForPickUp.custom.json`
 
-Import the `Get-User-Presence-Update.custom.json` file and associate with the Update Genesys Cloud User Presence data action integration which uses the Presence Public API OAuth client.
+Import the `Get-User-Presence-Update.custom.json` file and associate with the Update Genesys Cloud User Presence data action integration, which uses the Presence Public API OAuth client.
 
 1. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the `GC-User-Presence-Update.custom.json` file.
 
@@ -169,7 +169,7 @@ Import the `Get-User-Presence-Update.custom.json` file and associate with the Up
 
    ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction.png "Import the Update Genesys Cloud User Presence data action")
 
-Import the `GetInboundConversationDetailsForPickUp.custom.json` and `GetOutboundConversationDetailsForPickUp.custom.json` files and associate with the GetConversationDetailsPublicAPI data action integration which uses the GetConversationDetailsPublic API OAuth client.
+Import the `GetInboundConversationDetailsForPickUp.custom.json` and `GetOutboundConversationDetailsForPickUp.custom.json` files and associate with the GetConversationDetailsPublicAPI data action integration, which uses the GetConversationDetailsPublic API OAuth client.
 
 1. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the `GetInboundConversationDetailsForPickUp.custom.json` file.
 
@@ -199,7 +199,7 @@ This solution includes two Architect workflows that use the  two [data actions i
 
 The Event Orchestration trigger invoke these workflows. The workflows in turn calls the Update Genesys Cloud User Presence data action to update the Genesys Cloud user's presence.
 
-You must first import these workflows to your Genesys Cloud organization:
+First import these workflows to your Genesys Cloud organization:
 
 1. Download the `Set GC User to Busy.i3WorkFlow` file from the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository.
 
@@ -219,9 +219,9 @@ You must first import these workflows to your Genesys Cloud organization:
 
    ![Import your workflow file](images/SelectWorkflow1ImportFile.png "Import your workflow file")
 
-6. Modify the Presence Definition ID. Select the **Call Data Action** boxes that use the **GC User Presence Update** data action. In the **PRESENCE_DEFINITION_ID** field, paste the ID of the desired Genesys Cloud presence value that you want this workflow to set for the users.
+6. Modify the Presence Definition ID. Select the **Call Data Action** boxes that use the **GC User Presence Update** data action. In the **PRESENCE_DEFINITION_ID** field, enter the ID of the desired Genesys Cloud presence value that you want this workflow to set for the users.
 
-   ![Modify presence value](images/ModifyThePresenceDefinitionId1.png "Modify the presence definition id")
+   ![Modify presence value](images/ModifyThePresenceDefinitionId1.png "Modify the presence definition ID")
 
    :::primary
    **Note:** You can use the `GET /api/v2/presencedefinitions` Genesys Cloud Public API endpoint to get all your presence definition IDs.
@@ -248,7 +248,7 @@ You must first import these workflows to your Genesys Cloud organization:
 
       ![Import your workflow file](images/SelectWorkflow2ImportFile.png "Import your workflow file")
 
-13. Modify the presence definition ID. Select the **Call Data Action** box that uses the **GC User Presence Update** data action.  In the **PRESENCE_DEFINITION_ID** field, paste the ID of the desired Genesys Cloud presence value that you want this workflow to set for the users.
+13. Modify the presence definition ID. Select the **Call Data Action** box that uses the **GC User Presence Update** data action.  In the **PRESENCE_DEFINITION_ID** field, enter the ID of the desired Genesys Cloud presence value that you want this workflow to set for the users.
 
       ![Save your workflow](images/ModifyThePresenceDefinitionId2.png "Save your workflow")
 
@@ -262,7 +262,7 @@ You must first import these workflows to your Genesys Cloud organization:
 
 ## Create the event orchestration triggers
 
-Create the triggers that invokes the created Architect workflows. You must activate Event Orchestration in your Genesys Cloud organization and install Postman on your local machine.
+Create the triggers that invokes the created Architect workflows. Activate Event Orchestration in your Genesys Cloud organization and install Postman on your local machine.
 
 1. From the [update-gc-presence-on-communicate-call-activity-blueprint](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the Genesys Cloud Event Orchestration Trigger API's `postman_collection.json` file.
 
@@ -286,7 +286,7 @@ Create the triggers that invokes the created Architect workflows. You must activ
 
 7. Click **ProcessAutomation Trigger Creation**. On the **Authentication** tab, select **Bearer Token** and enter the saved access token from the previous step.
 
-     ![Paste the access token](images/PasteBearerToken.png "Paste the access token")
+     ![Enter the access token](images/PasteBearerToken.png "Enter the access token")
 
 8. Click the **Body** tab. Ensure that you change your API domain to match the AWS region of your hosted Genesys Cloud organization. Replace **my-workflow-id** with the ID of the **Set GC User to Busy** Architect workflow that you created previously. Click **Send**.
 
@@ -320,7 +320,7 @@ Create the triggers that invokes the created Architect workflows. You must activ
     ![Create the Conversation Start trigger](images/CreateTrigger2.png "Create the Conversation Start trigger")
 
    :::primary
-    **Note:** If you want your JSON body to match the screenshot, copy and paste the following JSON string. Modify the IN operator values to match your business requirements.
+    **Note:** You can use the following JSON string to match the blueprint solution. Modify the IN operator values to match your business requirements.
     :::
     
    ```json
@@ -342,8 +342,8 @@ Create the triggers that invokes the created Architect workflows. You must activ
    ```
 ## Additional resources
 
-* [Genesys Cloud API Explorer](https://developer.genesys.cloud/devapps/api-explorer "Opens the GC API Explorer")
-* [Genesys Cloud notification triggers ("Available topics")](https://developer.genesys.cloud/notificationsalerts/notifications/available-topics "Opens the Available topics page")
-* [Prefixes for AWS regions](https://developer.genesys.cloud/platform/api/ "Open the Overview page in the API section of the Genesys Cloud Developer Center")
+* [Genesys Cloud API Explorer](https://developer.genesys.cloud/devapps/api-explorer "Opens the GC API Explorer") in the Genesys Cloud Developer Center
+* [Genesys Cloud notification triggers](https://developer.genesys.cloud/notificationsalerts/notifications/available-topics "Opens the Available topics page") in the Genesys Cloud Developer Center
+* [Prefixes for AWS regions](https://developer.genesys.cloud/platform/api/ "Open the Overview page in the API section") in the Genesys Cloud Developer Center
 * [Postman API Platform](https://www.postman.com/ "Goes to the Postman API Platform page") in the Postman documentation
-* [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint "Opens the GitHub repo")
+* The [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint "Opens the GitHub repo") repository in GitHub
