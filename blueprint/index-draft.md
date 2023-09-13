@@ -313,7 +313,6 @@ Create the triggers that invoke the created Architect workflows. Activate Event 
              ],
          "enabled": true
      }
-     ```
 
 9. To create the second trigger, replace **my-workflow-id** with the ID of the **Set GC User to Available** Architect workflow that you created previously. Repeat the actions defined in step 8 and use the JSON body sample below to match the blueprint solution. Click **Send**.
 
@@ -339,7 +338,7 @@ Create the triggers that invoke the created Architect workflows. Activate Event 
             ],
         "enabled": true
     }
-   ```
+
 ## Additional resources
 
 * [Genesys Cloud API Explorer](https://developer.genesys.cloud/devapps/api-explorer "Opens the GC API Explorer") in the Genesys Cloud Developer Center
