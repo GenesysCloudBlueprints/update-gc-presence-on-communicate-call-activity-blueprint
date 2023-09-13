@@ -297,7 +297,6 @@ Create the triggers that invoke the created Architect workflows. Activate Event 
    :::
 
    ```json
-
      {
        "topicName":"v2.detail.events.conversation.{id}.user.start",
        "name": "GC Communicate Call User Start",
@@ -313,8 +312,9 @@ Create the triggers that invoke the created Architect workflows. Activate Event 
              ],
          "enabled": true
      }
-
+   ```
 9. To create the second trigger, replace **my-workflow-id** with the ID of the **Set GC User to Available** Architect workflow that you created previously. Repeat the actions defined in step 8 and use the JSON body sample below to match the blueprint solution. Click **Send**.
+
 
     ![Create the Conversation Start trigger](images/CreateTrigger2.png "Create the Conversation Start trigger")
 
@@ -337,7 +337,7 @@ Create the triggers that invoke the created Architect workflows. Activate Event 
             }
             ],
         "enabled": true
-    }
+    }```
 
 ## Additional resources
 
