@@ -337,7 +337,8 @@ Create the triggers that invoke the created Architect workflows. Activate Event 
             }
             ],
         "enabled": true
-    }```
+    }
+   ```
 
 ## Additional resources
 
