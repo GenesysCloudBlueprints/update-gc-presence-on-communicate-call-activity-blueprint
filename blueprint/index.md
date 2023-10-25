@@ -37,7 +37,7 @@ The following shows the end-to-end user experience that this solution enables.
 
 ### Genesys Cloud account
 
-* A Genesys Cloud 2 license. For more information, see [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the pricing article").
+* A Genesys Cloud 1 license. For more information, see [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the pricing article").
 * The Master Admin role in Genesys Cloud. For more information, see [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Opens the Roles and permissions overview article") in the Genesys Cloud Resource Center.
 
 ## Configure Genesys Cloud
