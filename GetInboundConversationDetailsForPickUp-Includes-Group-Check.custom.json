@@ -1,5 +1,5 @@
 {
-  "name": "GetInboundConversationDetailsForPickUp",
+  "name": "GetInboundConversationDetailsForPickUp (Includes Group Check)",
   "integrationType": "purecloud-data-actions",
   "actionType": "custom",
   "config": {
@@ -11,10 +11,11 @@
     },
     "response": {
       "translationMap": {
+        "purpose": "['participants'][?(@.purpose=='group')].purpose",
         "segmentType": "['participants'][?(@.purpose=='user')]['sessions'][?(@.direction=='inbound')]['segments'][?(@.segmentType=='interact')].segmentType"
       },
       "translationMapDefaults": {},
-      "successTemplate": "{\"segmentType\": ${segmentType}}"
+      "successTemplate": "{\"segmentType\": ${segmentType}, \"purpose\": ${purpose}}"
     }
   },
   "contract": {
@@ -37,6 +38,13 @@
             "type": "array",
             "items": {
               "title": "segmentType",
+              "type": "string"
+            }
+          },
+          "purpose": {
+            "type": "array",
+            "items": {
+              "title": "purpose",
               "type": "string"
             }
           }

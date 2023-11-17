@@ -166,7 +166,7 @@ To update a user's presence in Genesys Cloud, you call a Genesys Cloud public AP
 
   ![Set the presence data integration to active](images/3ESetToActive2.png "Set the presence data action integration to active")
 
-### Import four Genesys Cloud data actions
+### Import five Genesys Cloud data actions
 
 The GC User Presence data actions use the authenticated token that is supplied by the presence GC OAuth Client created in the previous step.
 
@@ -192,13 +192,13 @@ The GC User Presence data actions use the authenticated token that is supplied b
 
 The GC conversation detail data actions use the authenticated token that is supplied by the conversation GC OAuth Client created in the previous step.
 
-7. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the GetInboundConversationDetailsForPickUp.custom.json file.
+7. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the GetInboundConversationDetailsForPickUp-Includes-Group-Check.custom.json file.
 
 8. In Genesys Cloud, navigate to **Integrations** > **Actions** and click **Import**.
 
    ![Import the data action](images/4AImportDataActions.png "Import the data action")
 
-9. Select the GetInboundConversationDetailsForPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+9. Select the GetInboundConversationDetailsForPickUp-Includes-Group-Check.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
 
    ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction3.png "Import the Inbound Conversation Details data action")
 
@@ -210,7 +210,17 @@ The GC conversation detail data actions use the authenticated token that is supp
 
 12. Select the GetOutboundConversationDetailsForPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
 
-  ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction4.png "Import the nbound Conversation Details data action")
+  ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction4.png "Import the Outbound Conversation Details data action")
+
+13. From the [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the GetInboundConversationCallsCheckForUserPickUp.custom.json file.
+
+14. In Genesys Cloud, navigate to **Integrations** > **Actions** and click **Import**.
+
+  ![Import the data action](images/4AImportDataActions.png "Import the data action")
+
+15. Select the GetInboundConversationCallsCheckForUserPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+
+  ![Import the Update Genesys Cloud User Presence data action](images/4CImportFindTeamsUserIdDataAction5.png "Import the Inbound Conversation Calls data action")
 
 ### Import the Architect workflows
 

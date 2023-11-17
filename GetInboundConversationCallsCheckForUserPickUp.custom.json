@@ -1,0 +1,49 @@
+{
+  "name": "GetInboundConversationCallsCheckForUserPickUp",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/conversations/calls/${input.CONVERSATION_ID}",
+      "requestType": "GET",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "userId": "['participants'][?(@.state=='connected' && @.direction=='inbound' && @.purpose=='user')]['user'].id"
+      },
+      "translationMapDefaults": {},
+      "successTemplate": "{\"userId\": ${userId}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "CONVERSATION_ID": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "array",
+            "items": {
+              "title": "userId",
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}
