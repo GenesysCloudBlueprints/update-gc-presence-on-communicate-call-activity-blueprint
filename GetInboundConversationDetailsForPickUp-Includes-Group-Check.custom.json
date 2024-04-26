@@ -4,7 +4,7 @@
   "actionType": "custom",
   "config": {
     "request": {
-      "requestUrlTemplate": "/api/v2/analytics/conversations/${input.CONVERSATION_ID}/details",
+      "requestUrlTemplate": "/api/v2/conversations/${input.CONVERSATION_ID}",
       "requestType": "GET",
       "headers": {},
       "requestTemplate": "${input.rawRequest}"
@@ -12,7 +12,7 @@
     "response": {
       "translationMap": {
         "purpose": "['participants'][?(@.purpose=='group')].purpose",
-        "segmentType": "['participants'][?(@.purpose=='user')]['sessions'][?(@.direction=='inbound')]['segments'][?(@.segmentType=='interact')].segmentType"
+        "segmentType": "['participants'][?(@.purpose=='user')]['calls'][?(@.direction=='inbound')]['segments'][?(@.type=='Interact')].type"
       },
       "translationMapDefaults": {},
       "successTemplate": "{\"segmentType\": ${segmentType}, \"purpose\": ${purpose}}"
