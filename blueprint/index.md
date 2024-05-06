@@ -84,7 +84,7 @@ The following shows the end-to-end user experience that this solution enables.
 
   ![Name the custom role](images/nameCustomRole3.png "Name the custom role")
 
-9. Search and select the **Analytics**>**Conversation Detail**>**View** permission and click **Save** to assign the appropriate permissions to your custom role.
+9. Search and select the **Analytics**>**Conversation Detail**>**View** and **Conversation**>**Communication**>**View** permission and click **Save** to assign the appropriate permissions to your custom role.
 
 :::primary
 **Note:** Assign this role to your user record before creating the Genesys Cloud OAuth client, as described in the next section.
