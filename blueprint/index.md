@@ -136,7 +136,7 @@ To update a user's presence in Genesys Cloud, you call a Genesys Cloud public AP
 
    ![Navigate to the OAuth credentials](images/3CAddOAuthCredentials.png "Navigate to the OAuth credentials")
 
-4. Enter the client ID and client secret of the presence OAuth client that you in the previous step (#create-an-oauth-client-for-use-with-the-genesys-cloud-data-action-integration "Goes to the create an OAuth Client section"). Click **OK** and save the data action.
+4. Enter the client ID and client secret of the presence OAuth client that you did in the [previous step](#create-two-oauth-clients-for-use-with-genesys-cloud-data-action-integrations "Goes to the Create two OAuth clients for use with Genesys Cloud data action integrations section"). Click **OK** and save the data action.
 
    ![Add OAuth client credentials](images/3DOAuthClientIDandSecret.png "Add OAuth client credentials")
 
@@ -176,7 +176,7 @@ The GC User Presence data actions use the authenticated token that is supplied b
 
    ![Import the data action](images/4AImportDataActions.png "Import the data action")
 
-3. Select the GC-User-Presence-Update.custom.json file and associate it with the **Update Genesys Cloud User Presence** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+3. Select the GC-User-Presence-Update.custom.json file and associate it with the **Update Genesys Cloud User Presence** integration that you created in the [Add two Genesys Cloud data action integrations](#add "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
 
    ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction.png "Import the Update Genesys Cloud User Presence data action")
 
@@ -186,7 +186,7 @@ The GC User Presence data actions use the authenticated token that is supplied b
 
   ![Import the data action](images/4AImportDataActions.png "Import the data action")
 
-6. Select the GC-User-Presence-Update.custom.json file and associate it with the **Update Genesys Cloud User Presence** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+6. Select the GC-User-Presence-Update.custom.json file and associate it with the **Update Genesys Cloud User Presence** integration that you created in the [Add two Genesys Cloud data action integrations](#add-two-genesys-cloud-data-action-integrations "Goes to the Add two Genesys Cloud data action integrations section") section, and then click **Import Action**.
 
   ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction2.png "Import the Get Genesys Cloud User Presence data action")
 
@@ -198,7 +198,7 @@ The GC conversation detail data actions use the authenticated token that is supp
 
    ![Import the data action](images/4AImportDataActions.png "Import the data action")
 
-9. Select the GetInboundConversationDetailsForPickUp-Includes-Group-Check.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+9. Select the GetInboundConversationDetailsForPickUp-Includes-Group-Check.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add two Genesys Cloud data action integrations](#add-two-genesys-cloud-data-action-integrations "Goes to the Add two Genesys Cloud data action integrations section") section, and then click **Import Action**.
 
    ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction3.png "Import the Inbound Conversation Details data action")
 
@@ -208,7 +208,7 @@ The GC conversation detail data actions use the authenticated token that is supp
 
   ![Import the data action](images/4AImportDataActions.png "Import the data action")
 
-12. Select the GetOutboundConversationDetailsForPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+12. Select the GetOutboundConversationDetailsForPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add two Genesys Cloud data action integrations](#add-two-genesys-cloud-data-action-integrations "Goes to the Add two Genesys Cloud data action integrations section") section, and then click **Import Action**.
 
   ![Import the Update Genesys Cloud User Presence data action](images/4BImportFindTeamsUserIdDataAction4.png "Import the Outbound Conversation Details data action")
 
@@ -218,7 +218,7 @@ The GC conversation detail data actions use the authenticated token that is supp
 
   ![Import the data action](images/4AImportDataActions.png "Import the data action")
 
-15. Select the GetInboundConversationCallsCheckForUserPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add a web services data actions integration](#add-a-web-services-data-actions-integration "Goes to the Add a web services data actions integration section") section, and then click **Import Action**.
+15. Select the GetInboundConversationCallsCheckForUserPickUp.custom.json file and associate it with the **GetConversationDetailsPublicAPI** integration that you created in the [Add two Genesys Cloud data action integrations](#add-two-genesys-cloud-data-action-integrations "Goes to the Add two Genesys Cloud data action integrations section") section, and then click **Import Action**.
 
   ![Import the Update Genesys Cloud User Presence data action](images/4CImportFindTeamsUserIdDataAction5.png "Import the Inbound Conversation Calls data action")
 
@@ -326,7 +326,7 @@ After you have created the workflows, create the triggers that call them. You ne
 
 4. In the Genesys Cloud Event Orchestration API's folder, select **Genesys Cloud Client Credential Token Creation**. Change your API domain to match the AWS region in which your Genesys Cloud organization is hosted. The Genesys Cloud organization in this screenshot is hosted in us-east-1.
 
-5. Click the **Authorization** tab. In the **Username** field, paste the client ID from the [OAuth client that you created](#create-an-oauth-client-for-use-with-the-genesys-cloud-data-action-integration "Goes to the Create an OAuth client for use with the Genesys Cloud data action integration section"). In the **Password** field, paste the client secret from the same OAuth client. Click **Send**.
+5. Click the **Authorization** tab. In the **Username** field, paste the client ID from the [OAuth client that you created](#create-two-oauth-clients-for-use-with-genesys-cloud-data-action-integrations "Goes to the Create two OAuth clients for use with Genesys Cloud data action integrations section"). In the **Password** field, paste the client secret from the same OAuth client. Click **Send**.
 
   ![Create the access token](images/CreateBearerToken.png "Create the access token")
 
@@ -383,7 +383,6 @@ After you have created the workflows, create the triggers that call them. You ne
             ],
         "enabled": true
     }
-
 
 ## Additional resources
 
