@@ -294,100 +294,77 @@ First, import these workflows to your Genesys Cloud organization.
 
   ![Save your workflow](images/ImportedWorkflow2.png "Save your workflow")
 
-### Create an OAuth client for use for Event Orchestration trigger creation
-
-To create the Event Orchestration triggers, use an OAuth client to configure authentication with the Genesys Cloud Public API.
-
-1. Navigate to **Admin** > **Integrations** > **OAuth** and click **Add Client**.
-
-   ![Add an OAuth client](images/2AAddOAuthClient.png "Add an OAuth client")
-
-2. Enter a name for the OAuth client and select **Client Credentials** as the grant type. Click the **Roles** tab and assign the triggers role you created earlier in this blueprint for this OAuth client.
-
-     ![Select the custom role and the grant type](images/2BOAuthClientSetup.png "Select the custom role and the grant type")
-
-3. Click **Save**. Copy the client ID and the client secret values for later use.
-
-   ![Copy the client ID and client secret values](images/2COAuthClientCredentials.png "Copy the client ID and client secret values")
-
 ## Create the event orchestration triggers
 
-After you have created the workflows, create the triggers that call them. You need event orchestration activated in your Genesys Cloud organization and you need Postman running on your machine.
+Create the triggers that invoke the created Architect workflows.
 
-1. From the [update-gc-presence-on-communicate-call-activity-blueprint](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint) GitHub repository, download the Genesys Cloud Event Orchestration Trigger API's.postman_collection.json file.
+1. From Admin Home, search for **Triggers** and navigate to the Triggers list.
 
-2. In Postman, click **Import**
+   ![Navigate to Triggers](images/NavigateToTriggers.png "Navigate to Triggers")
 
-   ![Import the Event Orchestration API Collection](images/ImportPostmanCollection.png "Import the Event Orchestration API Collection")
+2. From the Triggers list, click **Add Trigger**.
 
-3. Select the Genesys Cloud Event Orchestration Trigger API's.postman_collection.json file and click **Import**
+   ![Add Trigger](images/AddTrigger.png "Add Trigger")
 
-   ![Import the Event Orchestration API Collection file](images/ImportPostmanCollectionFile.png "Import the Event Orchestration API Collection file")
+3. In the Add New Trigger window, name your trigger and click **Add**.
 
-4. In the Genesys Cloud Event Orchestration API's folder, select **Genesys Cloud Client Credential Token Creation**. Change your API domain to match the AWS region in which your Genesys Cloud organization is hosted. The Genesys Cloud organization in this screenshot is hosted in us-east-1.
+   ![Name Trigger](images/NameTrigger1.png "Name Trigger")
 
-5. Click the **Authorization** tab. In the **Username** field, paste the client ID from the [OAuth client that you created](#create-two-oauth-clients-for-use-with-genesys-cloud-data-action-integrations "Goes to the Create two OAuth clients for use with Genesys Cloud data action integrations section"). In the **Password** field, paste the client secret from the same OAuth client. Click **Send**.
+4. Under **Topic Name**, select **v2.detail.events.conversation.{id}.user.start**.
 
-  ![Create the access token](images/CreateBearerToken.png "Create the access token")
+5. Under **Workflow Target**, select **Set GC User to Busy**.  
 
-6. From the body of the response, copy the **access token**.
+6. Leave **Data Format** as **TopLevelPrimitives**.  
 
-     ![Copy the access token](images/CopyBearerToken.png "Copy the access token")
+7. Click **Add Condition**. For more information, see [Available Topics](https://developer.genesys.cloud/notificationsalerts/notifications/available-topics "Opens the Available Topics article") in the Genesys Cloud Developer Center.  To monitor the notifications, use the notification monitoring tool in the Developer Center.
 
-7. Click **ProcessAutomation Trigger Creation**. On the **Authentication** tab, select **Bearer Token** and paste the access token from the previous step.
+  ![Configure Trigger](images/ConfigureTrigger1.png "Configure Trigger")
 
-     ![Paste the access token](images/PasteBearerToken.png "Paste the access token")
+8. Under **JSON Path**, type **queueId**.
 
-8. Click the **Body** tab. Be sure to change your API domain to match the AWS region your Genesys Cloud organization is hosted. Replace **my-workflow-id** with the id of the **Set GC User to Busy** Architect workflow that you created earlier in this blueprint. Click **Send**.
+9. Under **Operator**, select **Exists** and set the **Value** toggle to **False**.
 
-     ![Create the Conversation Start trigger](images/CreateTrigger1.png "Create the Conversation Start trigger")
+10. Click **Create**.
 
-     **Note:** If you'd like your JSON Body to match the screenshot, copy at paste the following JSON string.
-     :::
+11. Set the **Active** toggle to **Active**.
 
-     {
-       "topicName":"v2.detail.events.conversation.{id}.user.start",
-       "name": "GC Communicate Call User Start",
-       "target":{
-         "id": "my-workflow-id",
-         "type": "Workflow" },
-         "matchCriteria": [
-            {
-             "jsonPath": "queueId",
-             "operator": "Exists",
-             "value": false
-             }
-             ],
-         "enabled": true
-     }
+12. Click **Save**.
 
-9. To create the second trigger, replace **my-workflow-id** with the ID of the **Set GC User to Available** Architect workflow that you created earlier in this blueprint. Repeat the actions defined in step 8 and use the JSON body sample below to match the screenshot.  Click **Send**.
+13. From Admin Home, search for **Triggers** and navigate to the Triggers list.
 
-    ![Create the Conversation Start trigger](images/CreateTrigger2.png "Create the Conversation Start trigger")
+   ![Navigate to Triggers](images/NavigateToTriggers.png "Navigate to Triggers")
 
-    **Note:** If you'd like your JSON Body to match the screenshot, copy at paste the following JSON string.  Modify the IN operator values to match you business requirements.
-    :::
+14. From the Triggers list, click **Add Trigger**.
 
-    {
-      "topicName":"v2.detail.events.conversation.{id}.user.end",
-      "name": "GC Communicate Call User End",
-      "target":{
-        "id": "my-workflow-id",
-        "type": "Workflow" },
-        "matchCriteria": [
-           {
-            "jsonPath": "queueId",
-            "operator": "Exists",
-            "value": false
-            }
-            ],
-        "enabled": true
-    }
+   ![Add Trigger](images/AddTrigger.png "Add Trigger")
+
+15. In the Add New Trigger window, name your trigger and click **Add**.
+
+   ![Name Trigger](images/NameTrigger2.png "Name Trigger")
+
+16. Under **Topic Name**, select **v2.detail.events.conversation.{id}.user.end**.
+
+17. Under **Workflow Target**, select **Set GC User to Available**.  
+
+18. Leave **Data Format** as **TopLevelPrimitives**.  
+
+19. Click **Add Condition**.
+
+  ![Configure Trigger](images/ConfigureTrigger2.png "Configure Trigger")
+
+20. Under **JSON Path**, type **queueId**.
+
+21. Under **Operator**, select **Exists** and set the **Value** toggle to **False**.
+
+22. Click **Create**.
+
+23. Set the **Active** toggle to **Active**.
+
+24. Click **Save**.
+
 
 ## Additional resources
 
 * [Genesys Cloud API Explorer](https://developer.genesys.cloud/devapps/api-explorer "Opens the GC API Explorer")
 * [Genesys Cloud notification triggers ("Available topics")](https://developer.genesys.cloud/notificationsalerts/notifications/available-topics "Opens the Available topics page")
-* [Prefixes for AWS regions](https://developer.genesys.cloud/platform/api/ "Open the Overview page in the API section of the Genesys Cloud Developer Center")
-* [Postman API Platform](https://www.postman.com/ "Goes to the Postman API Platform page") in the Postman documentation
 * [update-gc-presence-on-communicate-call-activity-blueprint repo](https://github.com/GenesysCloudBlueprints/update-gc-presence-on-communicate-call-activity-blueprint "Opens the GitHub repo")
